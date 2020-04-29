@@ -1,0 +1,11 @@
+{
+  "name": "api-dani",
+  "main": "index.js",
+  "description": "just a basic practice API",
+  "author": "don daniel",
+  "dependencies": {
+    "body-parser": "~1.5.1",
+    "express": "^4.17.1",
+    "mongoskin": "~1.4.12"
+  }
+}
