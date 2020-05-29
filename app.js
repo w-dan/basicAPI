@@ -2,10 +2,26 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');   // log
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+
+
+mongoose.connect('mongodb://localhost:27017/api', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, (err) =>{
+    if(err) console.log(`Database error ${err}`);
+    else{
+        console.log('Database online');
+        app.listen(process.env.PORT, () =>{
+            console.log(`API listening on: ${process.env.PORT}`);
+        });
+    };
+});
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
